@@ -1111,10 +1111,6 @@ body {
         margin-right: 0;
     }
 
-        #catalog-list {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 15px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1195,7 +1191,67 @@ body {
 
  /* ===== Estilos para el Catálogo ===== */
 
- /* ===== Estilos para el Catálogo (mejorados) ===== */
+#catalog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: left;
+  transition: transform 0.18s, box-shadow 0.18s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 260px;           /* Fixed card height */
+  box-sizing: border-box;
+}
+.product-card .product-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* Modern browsers */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+.product-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: var(--dark-gray);
+  flex: 0 1 auto;
+}
+.product-card p {
+  margin: 0;
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
+.product-card .buy-btn {
+  margin-top: auto;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary-pink), var(--primary-blue));
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  #catalog-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .product-card {
+    height: 180px;
+    padding: 7px;
+  }
+}
+
 .catalog-container {
   display: flex;
   gap: 2rem;
@@ -1224,67 +1280,6 @@ body {
   width: 100%;
 }
 
-#catalog-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
-  align-items: start;
-}
-
-/* tarjeta de producto con imagen cuadrada fija */
-.product-card {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 12px;
-  text-align: left;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
-/* Mantener la imagen con ratio 1:1 */
-.product-card .product-img {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* moderno y robusto */
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* nombre y precio */
-.product-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 6px 0 0 0;
-  color: var(--dark-gray);
-}
-
-.product-card p {
-  margin: 0;
-  color: var(--text-gray);
-}
-
-.product-card p strong {
-  color: var(--primary-pink);
-}
-
-/* botones */
-.product-card .buy-btn {
-  margin-top: auto;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--primary-pink), var(--primary-blue));
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-}
 
 /* pagination */
 .pagination {
@@ -1292,8 +1287,7 @@ body {
   text-align: center;
 }
 
-/* ===== Estilos Detalle de Producto tipo MercadoLibre ===== */
-.product-detail-container {
+ .product-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -1383,7 +1377,6 @@ body {
   border: 1px solid #ddd;
 }
 
-/* CTA tipo MercadoLibre */
 .product-info .buy-actions {
   display: flex;
   gap: 12px;
